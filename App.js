@@ -1,12 +1,8 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {Navigation} from './src/navigation/index';
 
 const App = () => {
-  return (
-    <View>
-      <Text>Hell World!</Text>
-    </View>
-  );
+  return <Navigation />;
 };
 
 export default App;
