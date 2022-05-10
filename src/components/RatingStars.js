@@ -1,29 +1,30 @@
 import React from 'react';
 import StarRating from 'react-native-star-rating';
 
-class RatingStar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      starCount: 3,
-    };
-  }
-
-  onStarRatingPress(rating) {
-    this.setState({
-      starCount: rating,
-    });
-  }
-
-  render() {
-    return (
+function RatingStars({starCount, peopleCount}) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.peopleCount}>{peopleCount}</Text>
       <StarRating
         disabled={false}
         maxStars={5}
-        rating={this.state.starCount}
-        selectedStar={rating => this.onStarRatingPress(rating)}
+        rating={starCount}
+        fullStarColor={'gold'}
       />
-    );
-  }
+    </View>
+  );
 }
-export default RatingStar;
+
+export default RatingStars;
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row-reverse',
+    marginTop: 200,
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+  },
+  peopleCount: {
+    color: 'gray',
+    margin: 10,
+  },
+});
