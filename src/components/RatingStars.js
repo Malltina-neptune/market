@@ -1,30 +1,32 @@
 import React from 'react';
 import StarRating from 'react-native-star-rating';
+import {View, Text, StyleSheet} from 'react-native';
 
 function RatingStars({starCount, peopleCount}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.peopleCount}>{peopleCount}</Text>
       <StarRating
         disabled={false}
         maxStars={5}
+        starSize={25}
         rating={starCount}
         fullStarColor={'gold'}
       />
+      <Text style={styles.peopleCount}>{peopleCount}</Text>
     </View>
   );
 }
 
 export default RatingStars;
+
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row-reverse',
-    marginTop: 200,
-    flexWrap: 'wrap',
     alignItems: 'flex-start',
+    flexDirection: 'row',
   },
   peopleCount: {
     color: 'gray',
-    margin: 10,
+    marginHorizontal: 8,
+    marginVertical: 4,
   },
 });
