@@ -1,34 +1,49 @@
 import React from 'react';
-import {View, TextInput, Image, StyleSheet} from 'react-native';
+import {View, TextInput, Image, StyleSheet , TouchableOpacity} from 'react-native';
 
-function Search(searchValue, setSearchValue, onSubmit) {
+function Search({searchValue, setSearchValue, onSubmit, onClear}) {
   return (
     <View style={styles.searchBox}>
-      <Image
-        style={styles.imgStyle}
-        source={require('../src/assets/search.png')}
-      />
-      <TextInput
-        value={searchValue}
-        onChangeText={setSearchValue}
-        onSubmitEditing={onSubmit}
-      />
+      <View style={styles.mainView}>
+        <Image
+          style={styles.imgStyle}
+          source={require('../assets/search.png')}
+        />
+        <TextInput
+          value={searchValue}
+          onChangeText={setSearchValue}
+          onSubmitEditing={onSubmit}
+        />
+      </View>
+      <TouchableOpacity style={styles.closeButtonParent} onPress={onClear}>
+        <Image
+          style={styles.closeButton}
+          source={require('../assets/close.png')}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
 const styles = StyleSheet.create({
-  searchBox: {
+  input: {
     backgroundColor: 'lightgray',
-    height: 40,
-    margin: 12,
-    padding: 10,
     borderRadius: 30,
     overflow: 'hidden',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   imgStyle: {
-    margin: 10,
     height: 20,
     width: 20,
+    marginRight: 15,
+  },
+  mainView: {
+    flexDirection: 'row',
+    padding: 10,
+  },
+  closeButtonParent: {
+    position: 'absolute',
+    right: 20,
   },
 });
 export default Search;
