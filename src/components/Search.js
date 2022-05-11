@@ -3,27 +3,32 @@ import {View, TextInput} from 'react-native';
 
 function Search(searchValue, setSearchValue, onSubmit) {
   return (
-    <View>
+    <View style={styles.searchBox}>
+      <Image
+        style={styles.imgStyle}
+        source={require('market/src/assets/search.png')}
+      />
       <TextInput
-        style={styles.searchBox}
-        placeholder="Search products"
         value={searchValue}
         onChangeText={setSearchValue}
-        onSubmitEditing={onSubmit}>
-        <Image
-          source={require('market/src/assets/search.png')}
-        />
-      </TextInput>
+        onSubmitEditing={onSubmit}
+      />
     </View>
   );
 }
 const styles = StyleSheet.create({
   searchBox: {
-    flex: 1,
+    backgroundColor: 'lightgray',
     height: 40,
     margin: 12,
-    borderWidth: 1,
     padding: 10,
+    borderRadius: 30,
+    overflow: 'hidden',
+  },
+  imgStyle: {
+    margin: 10,
+    height: 20,
+    width: 20,
   },
 });
 export default Search;
