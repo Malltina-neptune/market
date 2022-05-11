@@ -2,6 +2,7 @@ import {ActivityIndicator, FlatList, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 import Product from '../components/Product';
+import {useCallback} from 'react/cjs/react.development';
 
 const Result = () => {
   const route = useRoute();
@@ -28,6 +29,22 @@ const Result = () => {
       .catch(() => console.error('error on fetching search result'));
   }, [searchApi]);
 
+  const renderItem = useCallback(
+    ({item}) => (
+      <Product
+        image={item.image}
+        title={item.title}
+        rating={item.stars}
+        peopleRate={item.peopleRate}
+        price={item.price}
+        deal={item.discount}
+      />
+    ),
+    [],
+  );
+
+  const keyExtractor = useCallback(item => item.id, []);
+
   return (
     <View>
       {data.length < 1 ? (
@@ -36,17 +53,8 @@ const Result = () => {
         <FlatList
           data={data}
           showsVerticalScrollIndicator={false}
-          renderItem={({item}) => (
-            <Product
-              image={item.image}
-              title={item.title}
-              rating={item.stars}
-              peopleRate={item.peopleRate}
-              price={item.price}
-              deal={item.discount}
-            />
-          )}
-          keyExtractor={item => item.id}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
         />
       )}
     </View>
