@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, TextInput, Image, StyleSheet} from 'react-native';
 
-function Search(searchValue, setSearchValue, StyleSheet) {
+function Search(searchValue, setSearchValue, onSubmit) {
   return (
     <View style={styles.searchBox}>
       <Image
