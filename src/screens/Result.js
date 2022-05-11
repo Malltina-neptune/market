@@ -35,6 +35,7 @@ const Result = () => {
       ) : (
         <FlatList
           data={data}
+          showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
             <Product
               image={item.image}
