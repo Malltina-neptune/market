@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, View} from 'react-native';
+import {ActivityIndicator, TextInput, FlatList, View} from 'react-native';
 import Product from '../components/Product';
+import Search from '../components/Search';
 
 const Home = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
   const getProducts = async () => {
     try {
@@ -24,15 +26,28 @@ const Home = ({navigation}) => {
     getProducts();
   }, []);
 
+  const handleSearch = () => {
+    if (searchValue.trim().length === 0) {
+      return;
+    }
+    navigation.navigate('result', {title: searchValue});
+  };
+
   return (
     <View>
+      <TextInput
+        value={searchValue}
+        onChangeText={value => setSearchValue(value)}
+        onSubmitEditing={handleSearch}
+      />
+
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <FlatList
           data={data}
           keyExtractor={({id}, index) => id}
-          scrollEnabled={true}
+          showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
             <Product
               title={item.title}
