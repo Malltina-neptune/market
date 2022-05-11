@@ -35,10 +35,11 @@ const Home = ({navigation}) => {
 
   return (
     <View>
-      <TextInput
-        value={searchValue}
-        onChangeText={value => setSearchValue(value)}
-        onSubmitEditing={handleSearch}
+      <Search
+        searchValue={searchValue}
+        setSearchValue={value => setSearchValue(value)}
+        onSubmit={handleSearch}
+        onClear={() => setSearchValue('')}
       />
 
       {isLoading ? (
