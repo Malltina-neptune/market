@@ -10,9 +10,12 @@ const styles = StyleSheet.create({
     color: 'gray',
     textAlign: 'left',
     textTransform: 'capitalize',
-    lineHeight: 1.2,
-    fontSize: '18px',
-    padding: '0 4px 5px 8px',
+    fontSize: 18,
+    paddingEnd: 15,
+    paddingTop: 8,
+    paddingBottom: 10,
+    overflow: 'hidden',
+    maxHeight: '100%',
   },
 });
 
