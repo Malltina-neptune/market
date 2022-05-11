@@ -1,6 +1,7 @@
-import {ActivityIndicator, FlatList, Text, View} from 'react-native';
+import {ActivityIndicator, FlatList, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
+import Product from '../components/Product';
 
 const Result = () => {
   const route = useRoute();
@@ -35,7 +36,15 @@ const Result = () => {
       ) : (
         <FlatList
           data={data}
-          renderItem={({item}) => <Text>{item.title}</Text>}
+          renderItem={({item}) => (
+            <Product
+              image={item.image}
+              title={item.title}
+              rating={item.stars}
+              price={item.price}
+              deal={item.discount}
+            />
+          )}
           keyExtractor={item => item.id}
         />
       )}
