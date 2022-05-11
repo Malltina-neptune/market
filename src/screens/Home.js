@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
-
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, FlatList, View} from 'react-native';
+import Product from '../components/Product';
 
 const Home = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getProducts = async () => {
-     try {
-      const response = await fetch('https://api.malltina.net/search/v2?q=shoes');
+    try {
+      const response = await fetch(
+        'https://api.malltina.net/search/v2?q=shoes',
+      );
       const json = await response.json();
       setData(json.products);
     } catch (error) {
@@ -16,7 +18,7 @@ const Home = ({navigation}) => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     getProducts();
@@ -24,12 +26,21 @@ const Home = ({navigation}) => {
 
   return (
     <View>
-      {isLoading ? <ActivityIndicator/> : (
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
         <FlatList
           data={data}
-          keyExtractor={({ id }, index) => id}
-          renderItem={({ item }) => (
-            <Text>{item.title}</Text>
+          keyExtractor={({id}, index) => id}
+          scrollEnabled={true}
+          renderItem={({item}) => (
+            <Product
+              title={item.title}
+              deal={item.price.deal}
+              price={item.price.main}
+              rating={4}
+              image={item.image}
+            />
           )}
         />
       )}
@@ -38,4 +49,3 @@ const Home = ({navigation}) => {
 };
 
 export default Home;
-
