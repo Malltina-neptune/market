@@ -1,4 +1,4 @@
-import {SafeAreaView, ActivityIndicator, FlatList, Text} from 'react-native';
+import {ActivityIndicator, FlatList, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 
@@ -25,11 +25,11 @@ const Result = () => {
           })),
         ),
       )
-      .catch(() => alert('no item found'));
+      .catch(() => console.error('error on fetching search result'));
   }, [searchApi]);
 
   return (
-    <SafeAreaView>
+    <View>
       {data.length < 1 ? (
         <ActivityIndicator />
       ) : (
@@ -39,7 +39,7 @@ const Result = () => {
           keyExtractor={item => item.id}
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
