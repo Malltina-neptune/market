@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, TextInput} from 'react-native';
+import {View, TextInput, Image, StyleSheet} from 'react-native';
 
 function Search(searchValue, setSearchValue, onSubmit) {
   return (
     <View style={styles.searchBox}>
       <Image
         style={styles.imgStyle}
-        source={require('market/src/assets/search.png')}
+        source={require('../src/assets/search.png')}
       />
       <TextInput
         value={searchValue}
