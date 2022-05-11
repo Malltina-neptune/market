@@ -7,7 +7,6 @@ const Result = () => {
   const route = useRoute();
   const [data, setData] = useState('');
   const title = route.params.title.toLowerCase();
-
   const searchApi = `https://api.malltina.net/search/v2?q=${title}`;
 
   useEffect(() => {
@@ -19,7 +18,7 @@ const Result = () => {
             id: res.id,
             title: res.title,
             image: res.image,
-            starts: res.review.stars,
+            stars: res.review.stars,
             people: res.review.people,
             price: res.price.main,
             discount: res.price.deal,
