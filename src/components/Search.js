@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, Image, StyleSheet} from 'react-native';
+import {View, TextInput, Image, StyleSheet , TouchableOpacity} from 'react-native';
 
 function Search({searchValue, setSearchValue, onSubmit, onClear}) {
   return (
