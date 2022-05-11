@@ -55,7 +55,7 @@ const Home = ({navigation}) => {
               deal={item.price.deal}
               peopleRate={item.review.people}
               price={item.price.main}
-              rating={4}
+              rating={item.review.stars}
               image={item.image}
             />
           )}
