@@ -19,7 +19,7 @@ const Result = () => {
             title: res.title,
             image: res.image,
             stars: res.review.stars,
-            people: res.review.people,
+            peopleRate: res.review.people,
             price: res.price.main,
             discount: res.price.deal,
           })),
@@ -41,6 +41,7 @@ const Result = () => {
               image={item.image}
               title={item.title}
               rating={item.stars}
+              peopleRate={item.peopleRate}
               price={item.price}
               deal={item.discount}
             />

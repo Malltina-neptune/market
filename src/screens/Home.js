@@ -53,6 +53,7 @@ const Home = ({navigation}) => {
             <Product
               title={item.title}
               deal={item.price.deal}
+              peopleRate={item.review.people}
               price={item.price.main}
               rating={4}
               image={item.image}

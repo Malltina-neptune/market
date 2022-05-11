@@ -3,12 +3,13 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 
 import ProductPrice from './ProductPrice';
 import Title from './Title';
+import RatingStars from './RatingStars';
 
-function Product({title, price, deal, rating, image}) {
+function Product({title, price, deal, rating, image, peopleRate}) {
   return (
     <View style={styles.product}>
       <View style={styles.productDetail}>
-        <Text>{rating}</Text>
+        <RatingStars starCount={Number(rating)} peopleCount={peopleRate} />
         <Title title={title} />
         <ProductPrice mainPrice={price} discount={deal} />
       </View>
