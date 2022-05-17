@@ -4,7 +4,7 @@ const initialState = {
   products: [],
 };
 
-function userReducer(state = initialState, action) {
+function productReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
       return {...state, products: action.payload};
@@ -13,4 +13,4 @@ function userReducer(state = initialState, action) {
   }
 }
 
-export default userReducer;
+export default productReducer;
