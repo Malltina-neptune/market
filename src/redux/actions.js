@@ -12,10 +12,11 @@ export const getProducts = () => {
         },
       });
       const json = await result.json();
-      if (json) {
+      const products = json.products;
+      if (products) {
         dispatch({
           type: GET_PRODUCTS,
-          payload: json,
+          payload: products,
         });
       } else {
         console.log('Unable to fetch!');

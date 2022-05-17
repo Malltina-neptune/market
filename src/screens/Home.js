@@ -6,7 +6,7 @@ import Product from '../components/Product';
 import Search from '../components/Search';
 
 const Home = ({navigation}) => {
-  const products = useSelector(state => state.productReducer);
+  const {products} = useSelector(state => state.productReducer);
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState('');
 
@@ -20,6 +20,7 @@ const Home = ({navigation}) => {
     }
     navigation.navigate('result', {title: searchValue});
   };
+  console.log(products);
 
   return (
     <View>
