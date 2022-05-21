@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {getProducts} from '../redux/actions';
-import Product from '../components/Product';
-import Search from '../components/Search';
+import {getProducts} from './store/actions';
+import Product from '../../components/Product';
+import Search from '../../components/Search';
 
 const Home = ({navigation}) => {
-  const {products} = useSelector(state => state.productReducer);
+  const {products} = useSelector(state => state.productHomeReducer);
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState('');
 

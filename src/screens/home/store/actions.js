@@ -1,16 +1,10 @@
-export const GET_PRODUCTS = 'GET_PRODUCTS';
-
-const API_URL = 'https://api.malltina.net/search/v2?q=shoes';
+import getData from '../../../services/HomeService';
+import {GET_PRODUCTS} from './types';
 
 export const getProducts = () => {
   try {
     return async dispatch => {
-      const result = await fetch(API_URL, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const result = await getData;
       const json = await result.json();
       const products = json.products;
       if (products) {

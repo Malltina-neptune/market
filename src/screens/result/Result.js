@@ -1,7 +1,7 @@
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import React, {useEffect, useState, useCallback} from 'react';
 import {useRoute} from '@react-navigation/native';
-import Product from '../components/Product';
+import Product from '../../components/Product';
 
 const Result = () => {
   const route = useRoute();
