@@ -1,29 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, TextInput, FlatList, View} from 'react-native';
+import {ActivityIndicator, FlatList, View} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {getProducts} from '../redux/actions';
 import Product from '../components/Product';
 import Search from '../components/Search';
 
 const Home = ({navigation}) => {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const {products} = useSelector(state => state.productReducer);
+  const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState('');
 
-  const getProducts = async () => {
-    try {
-      const response = await fetch(
-        'https://api.malltina.net/search/v2?q=shoes',
-      );
-      const json = await response.json();
-      setData(json.products);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    getProducts();
+    dispatch(getProducts());
   }, []);
 
   const handleSearch = () => {
@@ -32,6 +20,7 @@ const Home = ({navigation}) => {
     }
     navigation.navigate('result', {title: searchValue});
   };
+  console.log(products);
 
   return (
     <View>
@@ -42,12 +31,12 @@ const Home = ({navigation}) => {
         onClear={() => setSearchValue('')}
       />
 
-      {isLoading ? (
+      {products.length < 1 ? (
         <ActivityIndicator />
       ) : (
         <FlatList
-          data={data}
-          keyExtractor={({id}, index) => id}
+          data={products}
+          keyExtractor={({id}) => id}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
             <Product
